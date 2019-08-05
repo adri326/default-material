@@ -1,0 +1,138 @@
+@white: rgb(255, 255, 255);
+@lightgray: rgb(153, 153, 153);
+@gray: rgb(75, 75, 75);
+@darkgray: rgb(48, 48, 48);
+@black: rgb(0, 0, 0);
+@red: rgb(199, 47, 47);
+@orange: rgb(241, 157, 46);
+@yellow: rgb(230, 233, 63);
+@green: rgb(47, 215, 54);
+@blue: rgb(56, 91, 218);
+@purple: rgb(187, 42, 160);
+
+@background-white: @white;
+@background-lightgray: rgb(207, 207, 207);
+@background-gray: rgb(50, 50, 50);
+@background-darkgray: rgb(32, 32, 32);
+@background-black: rgb(13, 13, 13);
+
+@text-black: rgb(11, 11, 11);
+@text-white: rgb(238, 238, 238);
+@text-gray: rgb(50, 50, 50);
+@text-lightgray: rgb(194, 194, 194);
+
+// Basic theme color selection
+
+#colors-basic(@name, @color) {
+  [dm-primary-color="@{name}"] {
+    --dm-primary-color: @color;
+  }
+
+  [dm-secondary-color="@{name}"] {
+    --dm-secondary-color: @color;
+  }
+}
+
+#colors-basic("red", @red);
+#colors-basic("orange", @orange);
+#colors-basic("yellow", @yellow);
+#colors-basic("green", @green);
+#colors-basic("blue", @blue);
+#colors-basic("purple", @purple);
+#colors-basic("white", @white);
+#colors-basic("lightgrey", @lightgray);
+#colors-basic("lightgray", @lightgray);
+#colors-basic("grey", @gray);
+#colors-basic("gray", @gray);
+#colors-basic("darkgrey", @darkgray);
+#colors-basic("darkgray", @darkgray);
+#colors-basic("black", @black);
+
+// Background
+
+[dm-background-color="white"] {
+  --dm-background-color: @background-white;
+}
+
+[dm-background-color="lightgrey"],
+[dm-background-color="lightgray"] {
+  --dm-background-color: @background-lightgray;
+}
+
+[dm-background-color="grey"],
+[dm-background-color="gray"] {
+  --dm-background-color: @background-gray;
+}
+
+[dm-background-color="darkgrey"],
+[dm-background-color="darkgray"] {
+  --dm-background-color: @background-darkgray;
+}
+
+[dm-background-color="black"] {
+  --dm-background-color: @background-black;
+}
+
+// Combinatory colors
+
+[dm-background-color="primary"] {
+  #combine(@name, @color) {
+    &[dm-primary-color="@{name}"], [dm-primary-color="@{name}"] & {
+      --dm-background-color: @color;
+    }
+  }
+
+  #combine("white", @background-white);
+  #combine("lightgrey", @background-lightgray);
+  #combine("lightgray", @background-lightgray);
+  #combine("grey", @background-gray);
+  #combine("gray", @background-gray);
+  #combine("darkgrey", @background-darkgray);
+  #combine("darkgray", @background-darkgray);
+  #combine("black", @background-black);
+}
+
+[dm-background-color="secondary"] {
+  #combine(@name, @color) {
+    &[dm-secondary-color="@{name}"], [dm-secondary-color="@{name}"] & {
+      --dm-background-color: @color;
+    }
+  }
+
+  #combine("white", @background-white);
+  #combine("lightgrey", @background-lightgray);
+  #combine("lightgray", @background-lightgray);
+  #combine("grey", @background-gray);
+  #combine("gray", @background-gray);
+  #combine("darkgrey", @background-darkgray);
+  #combine("darkgray", @background-darkgray);
+  #combine("black", @background-black);
+}
+
+[dm-background-color] {
+  background-color: var(--dm-background-color);
+}
+
+// Text
+
+[dm-text-color="black"] {
+  --dm-text-color: @text-black;
+}
+
+[dm-text-color="white"] {
+  --dm-text-color: @text-white;
+}
+
+[dm-text-color="grey"],
+[dm-text-color="gray"] {
+  --dm-text-color: @text-gray;
+}
+
+[dm-text-color="lightgrey"],
+[dm-text-color="lightgray"] {
+  --dm-text-color: @text-lightgray;
+}
+
+[dm-text-color] {
+  color: var(--dm-text-color);
+}

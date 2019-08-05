@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Default Material - Preview</title>
+    <link rel="stylesheet" href="build/main.css">
+    <link rel="stylesheet" href="build/colors.css">
+    <link rel="stylesheet" href="build/bar.css">
+    <link rel="stylesheet" href="build/box.css">
+    <link rel="stylesheet" href="build/shadow.css">
+    <link rel="stylesheet" href="build/list.css">
+  </head>
+  <body dm-text-color="black" dm-primary-color="red" dm-secondary-color="gray">
+    <header class="dm-box-header" dm-shadow="1" dm-size="big" dm-background-color="secondary" dm-text-color="white">
+      <h1>Default Material</h1>
+    </header>
+
+    <div class="dm-box-separator" dm-size="small"></div>
+
+    <section class="dm-box-section" dm-margins="normal">
+      <h2>Bars</h2>
+
+      <div class="dm-box-separator" dm-size="small"></div>
+
+      <p>
+        The <code>bars</code> chapter contains several bar-like objects, including a separator bar and a loading bar.
+      </p>
+
+      <div class="dm-box-separator"></div>
+
+      <h3>Loading bars</h3>
+
+      <div class="dm-box-section">
+        <ul class="dm-list" dm-spacing="big">
+          <li>
+            <div class="dm-bar-loading" dm-speed="fast" dm-background-color="lightgray" dm-primary-color="green" dm-size="small"></div>
+          </li>
+          <li>
+            <div class="dm-bar-loading" dm-speed="fast" dm-background-color="lightgray" dm-primary-color="blue"></div>
+          </li>
+          <li>
+            <div class="dm-bar-loading" dm-speed="fast" dm-background-color="lightgray" dm-primary-color="purple" dm-size="big"></div>
+          </li>
+
+          <li>
+            <div class="dm-bar-loading" dm-progress dm-background-color="lightgray" style="--dm-progress: 25;"></div>
+          </li>
+          <li>
+            <div class="dm-bar-loading" dm-progress dm-background-color="lightgray" dm-primary-color="orange" style="--dm-progress: 50;"></div>
+          </li>
+          <li>
+            <div class="dm-bar-loading" dm-progress dm-background-color="lightgray" dm-primary-color="yellow" style="--dm-progress: 75;"></div>
+          </li>
+        </ul>
+      </div>
+
+      <div class="dm-box-separator" dm-size="small"></div>
+
+      <h3>Separators</h3>
+
+      <div class="dm-box-section">
+        <ul class="dm-list" dm-spacing="big">
+          <li><div class="dm-bar-separator" dm-size="big"></div></li>
+          <li><div class="dm-bar-separator"></div></li>
+          <li><div class="dm-bar-separator" dm-size="small"></div></li>
+        </ul>
+      </div>
+    </section>
+
+    <div style="height: 300vh"></div>
+  </body>
+</html>

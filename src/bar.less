@@ -1,0 +1,134 @@
+.dm-bar {
+  &-separator {
+    margin-top: 1em;
+    margin-bottom: 1em;
+    position: relative;
+    height: 1px;
+
+    &::before {
+      content: "";
+      display: block;
+      position: absolute;
+      height: 1px;
+      left: 4%;
+      right: 4%;
+      top: 0;
+      background: var(--dm-secondary-color, gray);
+    }
+
+    &[dm-size="small"]::before {
+      left: 10%;
+      right: 10%;
+    }
+
+    &[dm-size="big"]::before {
+      left: 0;
+      right: 0;
+    }
+  }
+
+  &-loading {
+    position: relative;
+    height: .4rem;
+    overflow-x: hidden;
+    width: 100%;
+    border-radius: 1px;
+
+    &[dm-progress] {
+      &::before {
+        content: "";
+        display: block;
+        position: absolute;
+        background-color: var(--dm-primary-color, gray);
+        left: 0;
+        height: .4rem;
+        width: calc(1% * var(--dm-progress));
+      }
+    }
+
+    &:not([dm-progress]) {
+      --dm-speed: 2s;
+
+      &[dm-speed="slow"] {
+        --dm-speed: 3s;
+      }
+
+      &[dm-speed="fast"] {
+        --dm-speed: 1.5s;
+      }
+
+      &::before {
+        content: "";
+        position: absolute;
+        display: block;
+        height: .4rem;
+        width: 0%;
+        background-color: var(--dm-primary-color, gray);
+        transform: translateX(-50%);
+        animation: loading-bar-before var(--dm-speed) infinite linear, loading-bar-growth ~"calc(1.618033 * var(--dm-speed))" infinite;
+      }
+
+      &::after {
+        content: "";
+        position: absolute;
+        display: block;
+        height: .4rem;
+        width: 0%;
+        background-color: var(--dm-primary-color, gray);
+        transform: translateX(-50%);
+        animation: loading-bar-after var(--dm-speed) infinite linear, loading-bar-growth ~"calc(1.618033 * var(--dm-speed))" infinite;
+      }
+    }
+
+    &[dm-size="small"] {
+      &, &::before, &::after {
+        height: .2rem;
+        min-height: 1px;
+      }
+    }
+
+    &[dm-size="big"] {
+      &, &::before, &::after {
+        height: .7rem;
+      }
+    }
+  }
+}
+
+@keyframes loading-bar-after {
+  0% {
+    left: 25%;
+  }
+
+  100% {
+    left: 125%;
+  }
+}
+
+@keyframes loading-bar-before {
+  0% {
+    left: -50%;
+  }
+
+  25% {
+    left: -50%;
+  }
+
+  100% {
+    left: 25%;
+  }
+}
+
+@keyframes loading-bar-growth {
+  0% {
+    width: 30%;
+  }
+
+  50% {
+    width: 50%;
+  }
+
+  100% {
+    width: 30%;
+  }
+}

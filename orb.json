@@ -1,0 +1,8 @@
+{
+  "name": "default-material",
+  "description": "The default material library for orb-css",
+  "repository": "https://github.com/adri326/default-material",
+  "language": "css",
+  "prefix": "dm",
+  "authors": ["Shad Amethyst"]
+}

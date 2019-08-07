@@ -1,17 +1,10 @@
 @header-index: 100;
 
 .dm-box {
-  &-center {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-  }
-
-  &-horizontal {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
+  &[dm-size="small"] {
+    min-width: 5rem;
+    min-height: 5rem;
+    padding: 1rem;
   }
 
   &-header {
@@ -25,6 +18,7 @@
     top: 0;
     height: 3.4rem;
     padding-left: 1.0rem;
+    padding-right: 1.0rem;
 
     z-index: @header-index;
 
@@ -49,31 +43,15 @@
         font-size: 1.8rem;
       }
     }
-  }
 
-  &-horizontal, &-header {
-    #width(@size) {
-      & > [dm-width="@{size}"] {
-        flex-grow: @size / 12;
-        width: @size * 100% / 12;
-      }
+    & > .dm-box-separator {
+      height: 100%;
+      width: auto;
+      flex-grow: 1;
     }
-
-    #width(1);
-    #width(2);
-    #width(3);
-    #width(4);
-    #width(5);
-    #width(6);
-    #width(7);
-    #width(8);
-    #width(9);
-    #width(10);
-    #width(11);
-    #width(12);
   }
 
-  &-section {
+  &-container {
     padding-top: 2rem;
     padding-bottom: 2rem;
     padding-left: 8%;
@@ -91,17 +69,17 @@
       min-height: 12rem;
     }
 
-    &[dm-margins="none"] {
+    &[dm-margin="none"] {
       padding-left: 0;
       padding-right: 0;
     }
 
-    &[dm-margins="small"] {
+    &[dm-margin="small"] {
       padding-left: 3%;
       padding-right: 3%;
     }
 
-    &[dm-margins="big"] {
+    &[dm-margin="big"] {
       padding-left: 14%;
       padding-right: 14%;
     }
@@ -109,15 +87,23 @@
 
   &-separator {
     div& {
-      height: 4em;
+      height: 4rem;
 
       &[dm-size="small"] {
-        height: 1.5em;
+        height: 1.5rem;
       }
 
       &[dm-size="big"] {
-        height: 7em;
+        height: 7rem;
       }
     }
+  }
+
+  &-codeblock {
+    width: 100%;
+    padding: 1rem;
+    display: block;
+    white-space: pre-wrap;
+    word-break: break-all;
   }
 }

@@ -9,28 +9,34 @@
     <link rel="stylesheet" href="build/box.css">
     <link rel="stylesheet" href="build/shadow.css">
     <link rel="stylesheet" href="build/list.css">
+    <link rel="stylesheet" href="build/layout.css">
+    <link rel="stylesheet" href="build/font.css">
+
+    <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
   </head>
   <body dm-text-color="black" dm-primary-color="red" dm-secondary-color="gray">
-    <header class="dm-box-header" dm-shadow="1" dm-size="big" dm-background-color="secondary" dm-text-color="white">
+    <header class="dm-box-header" dm-shadow="2" dm-size="big" dm-background-color="secondary" dm-text-color="white">
       <h1>Default Material</h1>
+      <div class="dm-box-separator"></div>
+      <span class="dm-hidden-s">By Shad Amethyst</span>
     </header>
 
     <div class="dm-box-separator" dm-size="small"></div>
 
-    <section class="dm-box-section" dm-margins="normal">
+    <section class="dm-box-container" dm-margin="normal">
       <h2>Bars</h2>
 
       <div class="dm-box-separator" dm-size="small"></div>
 
       <p>
-        The <code>bars</code> chapter contains several bar-like objects, including a separator bar and a loading bar.
+        The <code>bars</code> book contains several bar-like objects, including a separator bar and a loading bar.
       </p>
 
       <div class="dm-box-separator"></div>
 
       <h3>Loading bars</h3>
 
-      <div class="dm-box-section">
+      <div class="dm-box-container">
         <ul class="dm-list" dm-spacing="big">
           <li>
             <div class="dm-bar-loading" dm-speed="fast" dm-background-color="lightgray" dm-primary-color="green" dm-size="small"></div>
@@ -58,7 +64,7 @@
 
       <h3>Separators</h3>
 
-      <div class="dm-box-section">
+      <div class="dm-box-container">
         <ul class="dm-list" dm-spacing="big">
           <li><div class="dm-bar-separator" dm-size="big"></div></li>
           <li><div class="dm-bar-separator"></div></li>
@@ -67,6 +73,57 @@
       </div>
     </section>
 
-    <div style="height: 300vh"></div>
+    <section class="dm-box-container" dm-margin="normal">
+      <h2>Layout</h2>
+
+      <div class="dm-box-separator"></div>
+
+      <p>
+        You can align HTML elements horizontally by giving their parent element the <code>dm-layout-horizontal</code> class name.
+        Its childs will be aligned horizontally instead of vertically.
+      </p>
+
+      <p>
+        The <code>dm-layout-horizontal</code> element is split in 12 columns.
+        You can specify how many columns one of its childs may take up with the <code>dm-width="N"</code> attribute.
+      </p>
+
+      <div class="dm-box-separator" dm-size="small"></div>
+
+      <div class="dm-layout-horizontal dm-layout-center" dm-spacing="small" dm-font-size="24">
+        <div class="dm-box dm-layout-center" dm-size="small" dm-text-color="white" dm-width="1" dm-background-color="yellow">
+          <span>1</span>
+        </div>
+        <div class="dm-box dm-layout-center" dm-size="small" dm-text-color="white" dm-width="2" dm-background-color="green">
+          <span>2</span>
+        </div>
+        <div class="dm-box dm-layout-center" dm-size="small" dm-text-color="white" dm-width="9" dm-background-color="cyan">
+          <span>9</span>
+        </div>
+      </div>
+
+      <p>
+        This example is what this code outputs:
+      </p>
+
+      <div class="dm-box-separator" dm-size="small"></div>
+
+      <code class="dm-box-codeblock prettyprint lang-html" dm-font-size="14" dm-font-size-l="16" dm-font-size-xl="16">
+        &lt;div class="dm-layout-horizontal dm-layout-center" dm-spacing="small" dm-font-size="24"&gt;
+          &lt;!-- The .dm-box class name gives the element a minimum width and height and some padding --&gt;
+          &lt;!-- The .dm-layout-center centers the elements within it, so we encapsulate the number in a &lt;span&gt; --&gt;
+          &lt;div class="dm-box dm-layout-center" dm-size="small" dm-text-color="white" dm-width="1" dm-background-color="yellow"&gt;
+            &lt;span&gt;1&lt;/span&gt;
+          &lt;/div&gt;
+          &lt;div class="dm-box dm-layout-center" dm-size="small" dm-text-color="white" dm-width="2" dm-background-color="green"&gt;
+            &lt;span&gt;2&lt;/span&gt;
+          &lt;/div&gt;
+          &lt;div class="dm-box dm-layout-center" dm-size="small" dm-text-color="white" dm-width="9" dm-background-color="cyan"&gt;
+            &lt;span&gt;9&lt;/span&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+      </code>
+    </section>
+
   </body>
 </html>

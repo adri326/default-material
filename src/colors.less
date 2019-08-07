@@ -9,12 +9,20 @@
 @green: rgb(47, 215, 54);
 @blue: rgb(56, 91, 218);
 @purple: rgb(187, 42, 160);
+@cyan: rgb(16, 228, 222);
 
 @background-white: @white;
 @background-lightgray: rgb(207, 207, 207);
 @background-gray: rgb(50, 50, 50);
 @background-darkgray: rgb(32, 32, 32);
 @background-black: rgb(13, 13, 13);
+@background-red: rgb(167, 58, 58);
+@background-orange: rgb(204, 139, 54);
+@background-yellow: rgb(194, 196, 66);
+@background-green: rgb(71, 190, 76);
+@background-blue: rgb(72, 95, 177);
+@background-purple: rgb(158, 58, 139);
+@background-cyan: rgb(51, 181, 166);
 
 @text-black: rgb(11, 11, 11);
 @text-white: rgb(238, 238, 238);
@@ -50,64 +58,40 @@
 
 // Background
 
-[dm-background-color="white"] {
-  --dm-background-color: @background-white;
-}
-
-[dm-background-color="lightgrey"],
-[dm-background-color="lightgray"] {
-  --dm-background-color: @background-lightgray;
-}
-
-[dm-background-color="grey"],
-[dm-background-color="gray"] {
-  --dm-background-color: @background-gray;
-}
-
-[dm-background-color="darkgrey"],
-[dm-background-color="darkgray"] {
-  --dm-background-color: @background-darkgray;
-}
-
-[dm-background-color="black"] {
-  --dm-background-color: @background-black;
-}
-
-// Combinatory colors
-
-[dm-background-color="primary"] {
-  #combine(@name, @color) {
+#background-color(@name, @color) {
+  [dm-background-color="primary"] {
     &[dm-primary-color="@{name}"], [dm-primary-color="@{name}"] & {
       --dm-background-color: @color;
     }
   }
 
-  #combine("white", @background-white);
-  #combine("lightgrey", @background-lightgray);
-  #combine("lightgray", @background-lightgray);
-  #combine("grey", @background-gray);
-  #combine("gray", @background-gray);
-  #combine("darkgrey", @background-darkgray);
-  #combine("darkgray", @background-darkgray);
-  #combine("black", @background-black);
-}
-
-[dm-background-color="secondary"] {
-  #combine(@name, @color) {
+  [dm-background-color="secondary"] {
     &[dm-secondary-color="@{name}"], [dm-secondary-color="@{name}"] & {
       --dm-background-color: @color;
     }
   }
 
-  #combine("white", @background-white);
-  #combine("lightgrey", @background-lightgray);
-  #combine("lightgray", @background-lightgray);
-  #combine("grey", @background-gray);
-  #combine("gray", @background-gray);
-  #combine("darkgrey", @background-darkgray);
-  #combine("darkgray", @background-darkgray);
-  #combine("black", @background-black);
+  [dm-background-color="@{name}"] {
+    --dm-background-color: @color;
+  }
 }
+
+#background-color("white", @background-white);
+#background-color("lightgrey", @background-lightgray);
+#background-color("lightgray", @background-lightgray);
+#background-color("grey", @background-gray);
+#background-color("gray", @background-gray);
+#background-color("darkgrey", @background-darkgray);
+#background-color("darkgray", @background-darkgray);
+#background-color("black", @background-black);
+#background-color("red", @background-red);
+#background-color("orange", @background-orange);
+#background-color("yellow", @background-yellow);
+#background-color("green", @background-green);
+#background-color("blue", @background-blue);
+#background-color("purple", @background-purple);
+#background-color("white", @background-white);
+#background-color("cyan", @background-cyan);
 
 [dm-background-color] {
   background-color: var(--dm-background-color);

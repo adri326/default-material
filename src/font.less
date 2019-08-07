@@ -1,0 +1,64 @@
+#set-font-size(@size) {
+  font-size: @size * 1px;
+
+  & code {
+    font-size: @size * 1px;
+  }
+}
+
+#font-size(@size) {
+  [dm-font-size="@{size}"], [dm-font-size-s="@{size}"] {
+    #set-font-size(@size);
+  }
+}
+
+#font-size(@size) when (@size < 48) {
+  #font-size(@size + 1);
+}
+
+#font-size(12);
+
+
+@media (min-width: 601px) and (max-width: 991px) {
+  #font-size-m(@size) {
+    [dm-font-size-m="@{size}"] {
+      #set-font-size(@size);
+    }
+  }
+
+  #font-size-m(@size) when (@size < 48) {
+    #font-size-m(@size + 1);
+  }
+
+  #font-size-m(12);
+}
+
+
+@media (min-width: 992px) and (max-width: 1199px) {
+  #font-size-l(@size) {
+    [dm-font-size-l="@{size}"] {
+      #set-font-size(@size);
+    }
+  }
+
+  #font-size-l(@size) when (@size < 48) {
+    #font-size-l(@size + 1);
+  }
+
+  #font-size-l(12);
+}
+
+
+@media (min-width: 1200px) {
+  #font-size-xl(@size) {
+    [dm-font-size-xl="@{size}"] {
+      #set-font-size(@size);
+    }
+  }
+
+  #font-size-xl(@size) when (@size < 48) {
+    #font-size-xl(@size + 1);
+  }
+
+  #font-size-xl(12);
+}

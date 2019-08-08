@@ -45,9 +45,35 @@
 
 #height(1);
 
+// Margins, S/*
+
+[dm-margin="small"], [dm-margin-s="small"] {
+  margin: 0.2rem;
+}
+
+[dm-margin="normal"], [dm-margin-s="normal"] {
+  margin: 0.4rem;
+}
+
+[dm-margin="big"], [dm-margin-s="big"] {
+  margin: 0.8rem;
+}
+
+// Visibility
+
+.dm-visible-s, .dm-visible-m, .dm-visible-l, .dm-visible-xl {
+  visibility: hidden;
+}
+
 @media (max-width: 600px) {
+  // Visibility, S
+
   .dm-hidden-s {
     visibility: hidden;
+  }
+
+  .dm-visible-s {
+    visibility: visible;
   }
 }
 
@@ -80,8 +106,28 @@
 
   #height-m(1);
 
+  // Margins, M
+
+  [dm-margin-m="small"] {
+    margin: 0.2rem;
+  }
+
+  [dm-margin-m="normal"] {
+    margin: 0.4rem;
+  }
+
+  [dm-margin-m="big"] {
+    margin: 0.8rem;
+  }
+
+  // Visibility, M
+
   .dm-hidden-m {
     visibility: hidden;
+  }
+
+  .dm-visible-m {
+    visibility: visible;
   }
 }
 
@@ -115,8 +161,28 @@
 
   #height-l(1);
 
+  // Margins, L
+
+  [dm-margin-l="small"] {
+    margin: 0.2rem;
+  }
+
+  [dm-margin-l="normal"] {
+    margin: 0.4rem;
+  }
+
+  [dm-margin-l="big"] {
+    margin: 0.8rem;
+  }
+
+  // Visibility, L
+
   .dm-hidden-l {
     visibility: hidden;
+  }
+
+  .dm-visible-l {
+    visibility: visible;
   }
 }
 
@@ -150,23 +216,29 @@
 
   #height-xl(1);
 
+  // Margins, XL
+
+  [dm-margin-xl="small"] {
+    margin: 0.2rem;
+  }
+
+  [dm-margin-xl="normal"] {
+    margin: 0.4rem;
+  }
+
+  [dm-margin-xl="big"] {
+    margin: 0.8rem;
+  }
+
+  // Visibility, XL
+
   .dm-hidden-xl {
     visibility: hidden;
   }
-}
 
-// margins
-
-[dm-margin="small"] {
-  margin: 0.2em;
-}
-
-[dm-margin="normal"] {
-  margin: 0.4em;
-}
-
-[dm-margin="big"] {
-  margin: 0.8em;
+  .dm-visible-xl {
+    visibility: visible;
+  }
 }
 
 // layout elements

@@ -1,0 +1,38 @@
+// This is not a pun :)
+
+[dm-border-radius="small"] {
+  border-radius: 2px;
+}
+
+[dm-border-radius="normal"] {
+  border-radius: 4px;
+}
+
+[dm-border-radius="big"] {
+  border-radius: 7px;
+}
+
+
+#border-width(@size) {
+  [dm-border-width="@{size}"] {
+    border-width: @size * 1px;
+  }
+}
+
+#border-width(@size) when (@size < 8) {
+  #border-width(@size + 1);
+}
+
+#border-width(1);
+
+[dm-border-width] {
+  border-style: solid;
+
+  &[dm-border-style="dashed"] {
+    border-style: dashed;
+  }
+
+  &[dm-border-style="dotted"] {
+    border-style: dotted;
+  }
+}

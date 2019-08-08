@@ -24,6 +24,20 @@
 @background-purple: rgb(158, 58, 139);
 @background-cyan: rgb(51, 181, 166);
 
+@border-lighten: 10%;
+@border-white: lighten(@background-white, @border-lighten);
+@border-lightgray: lighten(@background-lightgray, @border-lighten);
+@border-gray: lighten(@background-gray, @border-lighten);
+@border-darkgray: lighten(@background-darkgray, @border-lighten);
+@border-black: lighten(@background-black, @border-lighten);
+@border-red: lighten(@background-red, @border-lighten);
+@border-orange: lighten(@background-orange, @border-lighten);
+@border-yellow: lighten(@background-yellow, @border-lighten);
+@border-green: lighten(@background-green, @border-lighten);
+@border-blue: lighten(@background-blue, @border-lighten);
+@border-purple: lighten(@background-purple, @border-lighten);
+@border-cyan: lighten(@background-cyan, @border-lighten);
+
 @text-black: rgb(11, 11, 11);
 @text-white: rgb(238, 238, 238);
 @text-gray: rgb(50, 50, 50);
@@ -41,12 +55,6 @@
   }
 }
 
-#colors-basic("red", @red);
-#colors-basic("orange", @orange);
-#colors-basic("yellow", @yellow);
-#colors-basic("green", @green);
-#colors-basic("blue", @blue);
-#colors-basic("purple", @purple);
 #colors-basic("white", @white);
 #colors-basic("lightgrey", @lightgray);
 #colors-basic("lightgray", @lightgray);
@@ -55,6 +63,14 @@
 #colors-basic("darkgrey", @darkgray);
 #colors-basic("darkgray", @darkgray);
 #colors-basic("black", @black);
+#colors-basic("red", @red);
+#colors-basic("orange", @orange);
+#colors-basic("yellow", @yellow);
+#colors-basic("green", @green);
+#colors-basic("blue", @blue);
+#colors-basic("purple", @purple);
+#colors-basic("white", @white);
+#colors-basic("cyan", @cyan);
 
 // Background
 
@@ -95,6 +111,47 @@
 
 [dm-background-color] {
   background-color: var(--dm-background-color);
+}
+
+// Border color
+
+#border-color(@name, @color) {
+  [dm-border-color="primary"] {
+    &[dm-primary-color="@{name}"], [dm-primary-color="@{name}"] & {
+      --dm-border-color: @color;
+    }
+  }
+
+  [dm-border-color="secondary"] {
+    &[dm-secondary-color="@{name}"], [dm-secondary-color="@{name}"] & {
+      --dm-border-color: @color;
+    }
+  }
+
+  [dm-border-color="@{name}"] {
+    --dm-border-color: @color;
+  }
+}
+
+#border-color("white", @border-white);
+#border-color("lightgrey", @border-lightgray);
+#border-color("lightgray", @border-lightgray);
+#border-color("grey", @border-gray);
+#border-color("gray", @border-gray);
+#border-color("darkgrey", @border-darkgray);
+#border-color("darkgray", @border-darkgray);
+#border-color("black", @border-black);
+#border-color("red", @border-red);
+#border-color("orange", @border-orange);
+#border-color("yellow", @border-yellow);
+#border-color("green", @border-green);
+#border-color("blue", @border-blue);
+#border-color("purple", @border-purple);
+#border-color("white", @border-white);
+#border-color("cyan", @border-cyan);
+
+[dm-border-color] {
+  border-color: var(--dm-border-color);
 }
 
 // Text

@@ -259,7 +259,15 @@
     &.dm-layout-center {
       justify-content: center;
     }
+  }
 
+  &-vertical {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+  }
+
+  &-horizontal, &-vertical {
     &[dm-spacing="small"] {
       & > * {
         margin: 0.1rem;
@@ -277,11 +285,5 @@
         margin: 0.6rem;
       }
     }
-  }
-
-  &-vertical {
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
   }
 }

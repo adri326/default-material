@@ -1,8 +1,8 @@
 #set-font-size(@size) {
-  font-size: @size * 1px;
+  font-size: @size * 1pt;
 
   & code {
-    font-size: @size * 1px;
+    font-size: @size * 1pt;
   }
 }
 
@@ -18,6 +18,25 @@
 
 #font-size(12);
 
+@media (max-width: 600px) {
+  .dm-font {
+    &-center-s {
+      text-align: center;
+    }
+
+    &-left-s {
+      text-align: left;
+    }
+
+    &-right-s {
+      text-align: right;
+    }
+
+    &-justify-s {
+      text-align: justify;
+    }
+  }
+}
 
 @media (min-width: 601px) and (max-width: 991px) {
   #font-size-m(@size) {
@@ -31,6 +50,24 @@
   }
 
   #font-size-m(12);
+
+  .dm-font {
+    &-center-m {
+      text-align: center;
+    }
+
+    &-left-m {
+      text-align: left;
+    }
+
+    &-right-m {
+      text-align: right;
+    }
+
+    &-justify-m {
+      text-align: justify;
+    }
+  }
 }
 
 
@@ -46,6 +83,24 @@
   }
 
   #font-size-l(12);
+
+  .dm-font {
+    &-center-l {
+      text-align: center;
+    }
+
+    &-left-l {
+      text-align: left;
+    }
+
+    &-right-l {
+      text-align: right;
+    }
+
+    &-justify-l {
+      text-align: justify;
+    }
+  }
 }
 
 
@@ -61,4 +116,28 @@
   }
 
   #font-size-xl(12);
+
+  .dm-font {
+    &-center-xl {
+      text-align: center;
+    }
+
+    &-left-xl {
+      text-align: left;
+    }
+
+    &-right-xl {
+      text-align: right;
+    }
+
+    &-justify-xl {
+      text-align: justify;
+    }
+  }
+}
+
+.dm-font {
+  &-center {
+    text-align: center;
+  }
 }

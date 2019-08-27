@@ -1,8 +1,26 @@
 #apply-width(@size) {
   .dm-layout-horizontal > & {
-    // flex-grow: @size / 12;
+    flex-grow: @size / 12;
+    flex-shrink: 1;
+    flex-basis: @size / 12 * 100%;
   }
+
   width: @size * 100% / 12;
+}
+
+#width-margins(@size, @margins) {
+
+  width: calc(100% - @margins * 2);
+
+  &[dm-width="@{size}"] {
+    width: calc(@size * 100% / 12 - @margins * 2);
+  }
+
+  #_() when (@size < 12) {
+    #width-margins(@size + 1, @margins);
+  }
+
+  #_();
 }
 
 #apply-height(@size) {
@@ -17,10 +35,76 @@
   height: @size * 100% / 12;
 }
 
+// Layout
+
+#apply-vertical() {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+
+  & > * {
+    flex-shrink: 1;
+    flex-grow: 1;
+  }
+
+  & > span {
+    display: block;
+    flex-shrink: 0;
+    flex-grow: 0;
+  }
+
+  &[dm-spacing="small"] > .dm-layout-spacer {
+    height: .2rem;
+    flex: 0 0 $height;
+  }
+
+  &[dm-spacing="normal"] > .dm-layout-spacer {
+    height: .6rem;
+    flex: 0 0 $height;
+  }
+
+  &[dm-spacing="big"] > .dm-layout-spacer {
+    height: 1.2rem;
+    flex: 0 0 $height;
+  }
+}
+
+#apply-horizontal() {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+
+  & > * {
+    flex-shrink: 1;
+    flex-grow: 1;
+  }
+
+  & > span {
+    display: block;
+    flex-shrink: 0;
+    flex-grow: 0;
+  }
+
+  &[dm-spacing="small"] > .dm-layout-spacer {
+    width: .2rem;
+    flex: 0 0 $width;
+  }
+
+  &[dm-spacing="normal"] > .dm-layout-spacer {
+    width: .6rem;
+    flex: 0 0 $width;
+  }
+
+  &[dm-spacing="big"] > .dm-layout-spacer {
+    width: 1.2rem;
+    flex: 0 0 $width;
+  }
+}
+
 // width, S/*
 
 #width(@size) {
-  [dm-width-s="@{size}"], [dm-width="@{size}"] {
+  [dm-width="@{size}"] {
     #apply-width(@size);
   }
 }
@@ -49,14 +133,34 @@
 
 [dm-margin="small"], [dm-margin-s="small"] {
   margin: 0.2rem;
+  #width-margins(1, $margin);
 }
 
 [dm-margin="normal"], [dm-margin-s="normal"] {
   margin: 0.4rem;
+  #width-margins(1, $margin);
 }
 
 [dm-margin="big"], [dm-margin-s="big"] {
   margin: 0.8rem;
+  #width-margins(1, $margin);
+}
+
+// Layout elements
+
+.dm-layout {
+  &-center {
+    align-items: center;
+    justify-content: center;
+  }
+
+  &-horizontal {
+    #apply-horizontal();
+  }
+
+  &-vertical {
+    #apply-vertical();
+  }
 }
 
 // Visibility
@@ -65,7 +169,23 @@
   visibility: hidden;
 }
 
+// Devices
+
 @media (max-width: 600px) {
+  // width, S
+
+  #width-s(@size) {
+    [dm-width-s="@{size}"] {
+      #apply-width(@size);
+    }
+  }
+
+  #width-s(@size) when (@size < 12) {
+    #width-s(@size + 1);
+  }
+
+  #width-s(1);
+
   // Visibility, S
 
   .dm-hidden-s {
@@ -75,9 +195,20 @@
   .dm-visible-s {
     visibility: visible;
   }
+
+  // Layout, S
+
+  .dm-layout-vertical-s {
+    #apply-vertical();
+  }
+
+  .dm-layout-horizontal-s {
+    #apply-vertical();
+  }
 }
 
-@media (min-width: 601px) and (max-width: 991px) {
+
+@media (min-width: 601px) and (max-width: 990px) {
   // width, M
 
   #width-m(@size) {
@@ -129,10 +260,20 @@
   .dm-visible-m {
     visibility: visible;
   }
+
+  // Layout, M
+
+  .dm-layout-vertical-m {
+    #apply-vertical();
+  }
+
+  .dm-layout-horizontal-m {
+    #apply-horizontal();
+  }
 }
 
 
-@media (min-width: 992px) and (max-width: 1199px) {
+@media (min-width: 991px) and (max-width: 1200px) {
   // width, L
 
   #width-l(@size) {
@@ -184,10 +325,20 @@
   .dm-visible-l {
     visibility: visible;
   }
+
+  // Layout, L
+
+  .dm-layout-vertical-l {
+    #apply-vertical();
+  }
+
+  .dm-layout-horizontal-l {
+    #apply-horizontal();
+  }
 }
 
 
-@media (min-width: 1200px) {
+@media (min-width: 1201px) {
   // width, XL
 
   #width-xl(@size) {
@@ -239,51 +390,14 @@
   .dm-visible-xl {
     visibility: visible;
   }
-}
 
-// layout elements
+  // Layout, XL
 
-.dm-layout {
-  &-center:not(&-horizontal) {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+  .dm-layout-vertical-xl {
+    #apply-vertical();
   }
 
-  &-horizontal {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-
-    &.dm-layout-center {
-      justify-content: center;
-    }
-  }
-
-  &-vertical {
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-  }
-
-  &-horizontal, &-vertical {
-    &[dm-spacing="small"] {
-      & > * {
-        margin: 0.1rem;
-      }
-    }
-
-    &[dm-spacing="normal"] {
-      & > * {
-        margin: 0.3rem;
-      }
-    }
-
-    &[dm-spacing="big"] {
-      & > * {
-        margin: 0.6rem;
-      }
-    }
+  .dm-layout-horizontal-xl {
+    #apply-horizontal();
   }
 }

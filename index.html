@@ -3,20 +3,11 @@
   <head>
     <meta charset="utf-8">
     <title>Default Material - Preview</title>
-    <link rel="stylesheet" href="build/main.css">
-    <link rel="stylesheet" href="build/colors.css">
-    <link rel="stylesheet" href="build/bar.css">
-    <link rel="stylesheet" href="build/box.css">
-    <link rel="stylesheet" href="build/shadow.css">
-    <link rel="stylesheet" href="build/list.css">
-    <link rel="stylesheet" href="build/layout.css">
-    <link rel="stylesheet" href="build/font.css">
-    <link rel="stylesheet" href="build/border.css">
-    <link rel="stylesheet" href="build/button.css">
+    <link rel="stylesheet" href="../../build/default-material.css">
 
-    <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js" defer></script>
   </head>
-  <body dm-text-color="black" dm-primary-color="red" dm-secondary-color="gray">
+  <body dm-text-color="black" dm-primary-color="red" dm-secondary-color="gray" dm-font-size="14">
     <header class="dm-box-header" dm-shadow="2" dm-size="big" dm-background-color="secondary" dm-text-color="white">
       <h1>Default Material</h1>
       <div class="dm-box-separator"></div>
@@ -125,6 +116,66 @@
   &lt;/div&gt;
 &lt;/div&gt;
       </code>
+
+      <div class="dm-box-separator"></div>
+
+      <p>
+        The <code>layout</code> chapter also allows for responsive styling.
+        Several classes in this chapter may be followed by <code>-s</code>, <code>-m</code>, <code>-l</code> or <code>-xl</code>. It will then only apply if the screen meets the following requirement:
+      </p>
+
+      <table>
+        <thead>
+          <tr>
+            <th dm-width="3">Suffix</th>
+            <th dm-width="9">When it will be applied</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td dm-width="3" class="dm-layout-center dm-layout-horizontal"><code>-s</code></td>
+            <td dm-width="9">Small devices (width &lt;= 600px)</td>
+          </tr>
+          <tr>
+            <td dm-width="3" class="dm-layout-center dm-layout-horizontal"><code>-m</code></td>
+            <td dm-width="9">Medium devices (600px &lt; width &lt;= 990px)</td>
+          </tr>
+          <tr>
+            <td dm-width="3" class="dm-layout-center dm-layout-horizontal"><code>-l</code></td>
+            <td dm-width="9">Large devices (990px &lt; width &lt;= 1200px)</td>
+          </tr>
+          <tr>
+            <td dm-width="3" class="dm-layout-center dm-layout-horizontal"><code>-xl</code></td>
+            <td dm-width="9">Extra large devices (width &gt; 1200px)</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="dm-box-separator"></div>
+
+      <div class="dm-layout-vertical" dm-spacing="big">
+        <div class="dm-layout-horizontal dm-layout-vertical-s" dm-spacing="big" dm-height="3">
+          <div class="dm-box-image" dm-width="3" dm-width-s="12">
+            <img src="resources/img-a.jpg" alt="Pyrite crystal close-up" />
+          </div>
+
+          <span class="dm-layout-spacer"></span>
+
+          <div class="dm-box-image" dm-width="4" dm-width-s="12">
+            <img src="resources/img-b.jpg" alt="Cavengite crystal close-up" />
+          </div>
+
+          <span class="dm-layout-spacer"></span>
+
+          <div class="dm-box-image" dm-width="5" dm-width-s="12">
+            <img src="resources/img-c.jpg" alt="Blender render of blue, randomly-arranged cubes" />
+          </div>
+        </div>
+
+        <span class="dm-layout-spacer"></span>
+
+        <img src="resources/img-a.jpg" alt="Pyrite crystal close-up" />
+      </div>
     </section>
 
     <section class="dm-box-container">
